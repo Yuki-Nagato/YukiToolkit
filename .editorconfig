@@ -1,0 +1,27 @@
+[*]
+charset = utf-8
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+indent_style = tab
+
+brace_style = end_of_line
+int_align = false
+keep_existing_arrangement = false
+place_simple_blocks_on_single_line = false
+place_simple_declaration_blocks_on_single_line = false
+place_attribute_on_same_line = true
+space_after_unary_operator = false
+space_after_comma = true
+space_around_ternary_operator = true
+space_around_binary_operator = true
+space_around_member_access_operator = false
+space_before_open_square_brackets = false
+space_after_keywords_in_control_flow_statements = true
+space_before_comma = false
+space_between_method_call_name_and_opening_parenthesis = false
+space_between_method_declaration_name_and_open_parenthesis = false
+space_between_square_brackets = false
+space_between_parentheses_of_control_flow_statements = false
+keep_blank_lines_in_code = false
+keep_blank_lines_in_declarations = false
