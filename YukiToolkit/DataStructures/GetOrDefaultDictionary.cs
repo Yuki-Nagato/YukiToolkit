@@ -13,6 +13,11 @@ namespace YukiToolkit.DataStructures {
 			_defaultValue = defaultValue;
 		}
 
+		public GetOrDefaultDictionary(T baseDictionary) {
+			_baseDictionary = baseDictionary;
+			_defaultValue = key => default!;
+		}
+
 		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator() {
 			return _baseDictionary.GetEnumerator();
 		}

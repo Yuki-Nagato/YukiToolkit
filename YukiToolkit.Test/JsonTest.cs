@@ -40,7 +40,7 @@ namespace YukiToolkit.Test {
 		}
 
 		[Test] public void TestGetOrDefaultDictionary() {
-			var dict = new GetOrDefaultDictionary<SortedDictionary<int, int>, int, int>(new SortedDictionary<int, int>(), k => 0);
+			var dict = new GetOrDefaultDictionary<SortedDictionary<int, int>, int, int>(new SortedDictionary<int, int>());
 			Console.WriteLine(dict[1]);
 			dict[2]++;
 			Console.WriteLine(dict[2]);
