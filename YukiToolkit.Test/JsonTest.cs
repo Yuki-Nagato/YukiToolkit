@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
+using YukiToolkit.DataStructures;
 using YukiToolkit.ExtensionMethods;
 
 namespace YukiToolkit.Test {
@@ -35,6 +37,13 @@ namespace YukiToolkit.Test {
 			Console.WriteLine(book2.Name);
 			Assert.AreEqual(book1.Price, 0.123456789123456789123456789);
 			Assert.AreEqual(book2.Price, 123456789123456789123456789.0);
+		}
+
+		[Test] public void TestGetOrDefaultDictionary() {
+			var dict = new GetOrDefaultDictionary<SortedDictionary<int, int>, int, int>(new SortedDictionary<int, int>(), k => 0);
+			Console.WriteLine(dict[1]);
+			dict[2]++;
+			Console.WriteLine(dict[2]);
 		}
 
 		public class Book {
