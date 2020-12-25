@@ -5,17 +5,28 @@ using System.Collections.Generic;
 namespace YukiToolkit.DataStructures {
 	public class GetOrDefaultDictionary<T, TKey, TValue> : IDictionary<TKey, TValue>
 		where T : IDictionary<TKey, TValue> {
-		private readonly Func<TKey, TValue> _defaultValue;
 		private T _baseDictionary;
 
-		public GetOrDefaultDictionary(T baseDictionary, Func<TKey, TValue> defaultValue) {
+		public GetOrDefaultDictionary(T baseDictionary, Func<TKey, TValue> defaultValue, bool autoAddIfNotExist = false) {
 			_baseDictionary = baseDictionary;
-			_defaultValue = defaultValue;
+			DefaultValue = defaultValue;
+			AutoAddIfNotExist = autoAddIfNotExist;
 		}
 
-		public GetOrDefaultDictionary(T baseDictionary) {
+		public GetOrDefaultDictionary(T baseDictionary, TValue defaultValue, bool autoAddIfNotExist = false) {
 			_baseDictionary = baseDictionary;
-			_defaultValue = key => default!;
+			DefaultValue = key => defaultValue;
+			AutoAddIfNotExist = autoAddIfNotExist;
+		}
+
+		public bool AutoAddIfNotExist {
+			get;
+			set;
+		}
+
+		public Func<TKey, TValue> DefaultValue {
+			get;
+			set;
 		}
 
 		public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator() {
@@ -66,7 +77,18 @@ namespace YukiToolkit.DataStructures {
 		}
 
 		public TValue this[TKey key] {
-			get => TryGetValue(key, out var v) ? v : _defaultValue(key);
+			get {
+				if (TryGetValue(key, out var v)) {
+					return v;
+				}
+
+				var result = DefaultValue(key);
+				if (AutoAddIfNotExist) {
+					Add(key, result);
+				}
+
+				return result;
+			}
 			set => _baseDictionary[key] = value;
 		}
 

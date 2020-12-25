@@ -12,12 +12,12 @@ namespace YukiToolkit.Test {
 		}
 
 		[Test] public void TestToJsonString() {
-			Book book1 = new Book {
+			Book book1 = new() {
 				Name = "LearningPython",
 				Price = 0.123456789123456789123456789,
 				Positions = new int[2, 3] {{1, 2, 3}, {4, 5, 6}}
 			};
-			Book book2 = new Book {
+			Book book2 = new() {
 				Name = "中文测试",
 				Price = 123456789123456789123456789.0,
 				Positions = null
@@ -40,7 +40,7 @@ namespace YukiToolkit.Test {
 		}
 
 		[Test] public void TestGetOrDefaultDictionary() {
-			var dict = new GetOrDefaultDictionary<SortedDictionary<int, int>, int, int>(new SortedDictionary<int, int>());
+			var dict = new GetOrDefaultDictionary<SortedDictionary<int, int>, int, int>(new SortedDictionary<int, int>(), 0);
 			Console.WriteLine(dict[1]);
 			dict[2]++;
 			Console.WriteLine(dict[2]);

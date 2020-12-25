@@ -10,6 +10,7 @@
 		<Company>Yuki Nagato</Company>
 		<RepositoryUrl>https://github.com/Yuki-Nagato/YukiToolkit</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
+		<PackageVersion>3</PackageVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
