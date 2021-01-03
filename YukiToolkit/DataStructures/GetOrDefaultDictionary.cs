@@ -3,20 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace YukiToolkit.DataStructures {
-	public class GetOrDefaultDictionary<T, TKey, TValue> : IDictionary<TKey, TValue>
-		where T : IDictionary<TKey, TValue> {
-		private T _baseDictionary;
+	public class GetOrDefaultDictionary<TKey, TValue> : IDictionary<TKey, TValue> {
+		private readonly IDictionary<TKey, TValue> _baseDictionary;
 
-		public GetOrDefaultDictionary(T baseDictionary, Func<TKey, TValue> defaultValue, bool autoAddIfNotExist = false) {
+		public GetOrDefaultDictionary(IDictionary<TKey, TValue> baseDictionary, Func<TKey, TValue> defaultValue, bool autoAddIfNotExist = false) {
 			_baseDictionary = baseDictionary;
 			DefaultValue = defaultValue;
 			AutoAddIfNotExist = autoAddIfNotExist;
 		}
 
-		public GetOrDefaultDictionary(T baseDictionary, TValue defaultValue, bool autoAddIfNotExist = false) {
+		public GetOrDefaultDictionary(IDictionary<TKey, TValue> baseDictionary, TValue defaultValue, bool autoAddIfNotExist = false) {
 			_baseDictionary = baseDictionary;
 			DefaultValue = key => defaultValue;
 			AutoAddIfNotExist = autoAddIfNotExist;
+		}
+
+		public GetOrDefaultDictionary() {
+			_baseDictionary = new SortedDictionary<TKey, TValue>();
+			if (typeof(TValue).GetConstructor(Type.EmptyTypes) == null) {
+				DefaultValue = key => default!;
+				AutoAddIfNotExist = false;
+			}
+			else {
+				DefaultValue = key => Activator.CreateInstance<TValue>();
+				AutoAddIfNotExist = true;
+			}
 		}
 
 		public bool AutoAddIfNotExist {
