@@ -2,19 +2,22 @@ using System;
 using NUnit.Framework;
 using YukiToolkit.DataStructures;
 using YukiToolkit.ExtensionMethods;
+using YukiToolkit.Tools;
 
 namespace YukiToolkit.Test {
 	public class JsonTest {
 		private string _tempJson = "";
 
-		[SetUp] public void Setup() {
+		[SetUp]
+		public void Setup() {
 		}
 
-		[Test] public void TestToJsonString() {
+		[Test]
+		public void TestToJsonString() {
 			Book book1 = new() {
 				Name = "LearningPython",
 				Price = 0.123456789123456789123456789,
-				Positions = new int[2, 3] {{1, 2, 3}, {4, 5, 6}}
+				Positions = new int[2, 3] { { 1, 2, 3 }, { 4, 5, 6 } }
 			};
 			Book book2 = new() {
 				Name = "中文测试",
@@ -30,7 +33,8 @@ namespace YukiToolkit.Test {
 			Console.WriteLine(result);
 		}
 
-		[Test] public void TestToObjectFromJson() {
+		[Test]
+		public void TestToObjectFromJson() {
 			var (book1, book2) = _tempJson.ToObjectFromJson<(Book, Book)>();
 			Console.WriteLine(book1.Name);
 			Console.WriteLine(book2.Name);
@@ -38,7 +42,8 @@ namespace YukiToolkit.Test {
 			Assert.AreEqual(book2.Price, 123456789123456789123456789.0);
 		}
 
-		[Test] public void TestGetOrDefaultDictionary() {
+		[Test]
+		public void TestGetOrDefaultDictionary() {
 			var dict = new GetOrDefaultDictionary<int, int>();
 			Console.WriteLine(dict[1]);
 			dict[2]++;

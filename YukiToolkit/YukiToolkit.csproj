@@ -5,16 +5,15 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>YukiToolkit</PackageId>
-		<Version>2</Version>
+		<Version>5</Version>
 		<Authors>Yuki Nagato</Authors>
 		<Company>Yuki Nagato</Company>
 		<RepositoryUrl>https://github.com/Yuki-Nagato/YukiToolkit</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<PackageVersion>4</PackageVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 	</ItemGroup>
 
 </Project>
