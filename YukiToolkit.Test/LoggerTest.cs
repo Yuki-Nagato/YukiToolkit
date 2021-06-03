@@ -16,6 +16,7 @@ namespace YukiToolkit.Test {
 		public void TestLogger() {
 			var logger = new Logger();
 			logger.Log("hello {0} {1}", 123, 0.456);
+			logger.Log("{\"a\": 1}");
 		}
 	}
 }

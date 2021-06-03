@@ -11,7 +11,13 @@ namespace YukiToolkit.Tools {
 			var fileName = stackFrame.GetFileName();
 			fileName = Path.GetFileName(fileName);
 			var lineNumber = stackFrame.GetFileLineNumber();
-			var line = string.Format($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss.fff zz}] [{fileName}:{lineNumber}] " + format, args);
+			string line;
+			if (args.Length == 0) {
+				line = $"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss.fff zz}] [{fileName}:{lineNumber}] " + format;
+			}
+			else {
+				line = string.Format($"[{DateTimeOffset.Now:yyyy-MM-dd HH:mm:ss.fff zz}] [{fileName}:{lineNumber}] " + format, args);
+			}
 			Console.WriteLine(line);
 			if (LogFile != null) {
 				File.AppendAllText(LogFile, line + "\n");
