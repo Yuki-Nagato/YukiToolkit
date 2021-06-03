@@ -5,7 +5,7 @@
 		<Nullable>enable</Nullable>
 
 		<PackageId>YukiToolkit</PackageId>
-		<Version>5</Version>
+		<Version>6</Version>
 		<Authors>Yuki Nagato</Authors>
 		<Company>Yuki Nagato</Company>
 		<RepositoryUrl>https://github.com/Yuki-Nagato/YukiToolkit</RepositoryUrl>
